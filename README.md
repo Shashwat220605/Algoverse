@@ -20,7 +20,6 @@ The workspace combines algorithm visualizations, C++ implementations, execution 
 - 🏗️ Heap visualizations
 - 🌐 Graph traversal visualizations
 - 🧠 Step-by-step algorithm execution
-- 💻 C++ implementation viewer
 - 🎯 Current code-line highlighting
 - 📊 Complexity information
 - 🧮 Live execution variables
