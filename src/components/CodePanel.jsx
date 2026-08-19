@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { getCodeForLanguage, LANGUAGES } from "../utils/languageCode.js";
 
 export default function CodePanel({
@@ -7,6 +7,8 @@ export default function CodePanel({
   step,
 }) {
   const [language, setLanguage] = useState("C++");
+  const codeScrollRef = useRef(null);
+  const activeLineRef = useRef(null);
 
   const array = step?.array || [];
   const target = step?.target;
@@ -38,6 +40,15 @@ export default function CodePanel({
   useEffect(() => {
     setLanguage("C++");
   }, [code]);
+
+  useEffect(() => {
+    if (!activeLineRef.current || !codeScrollRef.current) return;
+
+    activeLineRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }, [activeLine, language]);
 
   const selectLanguage = (nextLanguage) => {
     setLanguage(nextLanguage);
@@ -75,7 +86,10 @@ export default function CodePanel({
         </div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-auto p-4">
+      <div
+        ref={codeScrollRef}
+        className="min-h-0 flex-1 overflow-auto p-4"
+      >
         <div className="font-mono text-xs">
           {languageCode.map((line, index) => {
             const isActive = index === activeLine;
@@ -83,6 +97,7 @@ export default function CodePanel({
             return (
               <div
                 key={`${language}-${index}`}
+                ref={isActive ? activeLineRef : null}
                 className={`group flex min-h-7 items-center rounded-md transition-all duration-300 ${
                   isActive
                     ? "bg-violet-500/15 text-violet-100"
