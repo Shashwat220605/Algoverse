@@ -7,19 +7,23 @@ import {
   Gauge,
 } from "lucide-react";
 
-import { PLAYBACK_SPEEDS } from "../store/algorithmStore.js";
+import {
+  PLAYBACK_SPEEDS,
+  useAlgorithmStore,
+} from "../store/algorithmStore.js";
 
 export default function StepControls({
   currentStep,
   totalSteps,
   isPlaying,
-  playbackSpeed,
-  onSpeedChange,
   onPrevious,
   onNext,
   onReset,
   onTogglePlay,
 }) {
+  const playbackSpeed = useAlgorithmStore((state) => state.playbackSpeed);
+  const setPlaybackSpeed = useAlgorithmStore((state) => state.setPlaybackSpeed);
+
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 bg-[#09090b] px-5 py-4">
       <div className="flex items-center gap-2">
@@ -36,7 +40,7 @@ export default function StepControls({
           {PLAYBACK_SPEEDS.map((speed) => (
             <button
               key={speed.value}
-              onClick={() => onSpeedChange(speed.value)}
+              onClick={() => setPlaybackSpeed(speed.value)}
               className={`rounded-md px-2.5 py-1.5 text-[11px] font-medium transition ${
                 playbackSpeed === speed.value
                   ? "bg-violet-500/20 text-violet-200"
@@ -50,7 +54,7 @@ export default function StepControls({
 
         <select
           value={playbackSpeed}
-          onChange={(event) => onSpeedChange(Number(event.target.value))}
+          onChange={(event) => setPlaybackSpeed(Number(event.target.value))}
           className="rounded-lg border border-white/10 bg-[#09090b] px-2.5 py-2 text-xs text-gray-300 outline-none sm:hidden"
           aria-label="Playback speed"
         >
