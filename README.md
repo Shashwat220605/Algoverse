@@ -362,6 +362,10 @@ B.Tech Computer Science & Engineering
 
 ---
 
-## 📄 License
+## 📄 License & Copyright
 
-Add your preferred license here before publishing the repository.
+Copyright © 2026 Shashwat Ghadge. All rights reserved.
+
+AlgoVerse is **not open source**. No permission is granted to copy, modify, distribute, publish, sublicense, sell, or reuse this project's source code, design, graphics, documentation, or other project assets without prior written permission from the copyright holder.
+
+For the complete terms, see the [`LICENSE`](./LICENSE) file.
