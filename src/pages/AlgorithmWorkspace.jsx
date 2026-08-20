@@ -543,6 +543,7 @@ export default function AlgorithmWorkspace() {
           <select value={algorithm} onChange={(event) => { const value = event.target.value; if (value === "dijkstra") { window.dispatchEvent(new CustomEvent("algoverso:open-dijkstra")); return; } setAlgorithm(value); }} className="rounded-lg border border-white/10 bg-[#09090b] px-3 py-2 text-sm text-white outline-none focus:border-violet-500/50">
             {ALGORITHM_GROUPS.map((group) => <optgroup key={group.label} label={group.label} className="bg-[#09090b]">{group.items.map(([value, label]) => <option key={value} value={value} className="bg-[#09090b]">{label}</option>)}</optgroup>)}
           </select>
+          <button onClick={() => window.dispatchEvent(new CustomEvent("algoverso:open-learning-hub"))} className="rounded-lg border border-violet-400/20 bg-violet-500/10 px-3 py-2 text-xs font-semibold text-violet-200 transition hover:bg-violet-500/20">✦ Learning Hub</button>
         </div>
         <div className="flex items-center gap-3">
           <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">{currentAlgorithm.category}</span>
