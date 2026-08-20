@@ -11,6 +11,7 @@ export default function LearningHub() {
   const [tab, setTab] = useState("progress");
   const [progress, setProgress] = useState(() => loadProgress());
   const refresh = () => setProgress(loadProgress());
+  useEffect(() => { const openDijkstra = () => { setOpen(true); setTab("dijkstra"); }; window.addEventListener("algoverso:open-dijkstra", openDijkstra); return () => window.removeEventListener("algoverso:open-dijkstra", openDijkstra); }, []);
 
   useEffect(() => {
     const openDijkstra = () => { setOpen(true); setTab("dijkstra"); };
