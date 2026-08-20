@@ -80,6 +80,21 @@ button.bg-violet-600:hover {
 
 .rounded-full { backdrop-filter: blur(8px); }
 
+/* Learning Hub sits beside the algorithm selector on desktop. */
+main > header > div:first-child > button.fixed.right-5.top-20 {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  margin-left: 0.25rem;
+}
+
+@media (max-width: 767px) {
+  main > header > div:first-child > button.fixed.right-5.top-20 {
+    position: static !important;
+    margin-left: 0.25rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition-duration: 0.01ms !important;
