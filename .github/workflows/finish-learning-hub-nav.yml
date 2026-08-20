@@ -1,0 +1,36 @@
+name: Finish Learning Hub Navigation
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  finish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Place Learning Hub beside selector
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('src/pages/AlgorithmWorkspace.jsx')
+          s = p.read_text()
+          old = '          </select>\n        </div>\n        <div className="flex items-center gap-3">'
+          new = '          </select>\n          <button onClick={() => window.dispatchEvent(new CustomEvent("algoverso:open-learning-hub"))} className="rounded-lg border border-violet-400/20 bg-violet-500/10 px-3 py-2 text-xs font-semibold text-violet-200 transition hover:bg-violet-500/20">✦ Learning Hub</button>\n        </div>\n        <div className="flex items-center gap-3">'
+          s = s.replace(old, new, 1)
+          p.write_text(s)
+          p = Path('src/components/LearningHub.jsx')
+          s = p.read_text()
+          marker = '  useEffect(() => { const openDijkstra = () => { setOpen(true); setTab("dijkstra"); }; window.addEventListener("algoverso:open-dijkstra", openDijkstra); return () => window.removeEventListener("algoverso:open-dijkstra", openDijkstra); }, []);'
+          insert = marker + '\n  useEffect(() => { const openHub = () => setOpen(true); window.addEventListener("algoverso:open-learning-hub", openHub); return () => window.removeEventListener("algoverso:open-learning-hub", openHub); }, []);'
+          s = s.replace(marker, insert, 1)
+          s = s.replace('    <button onClick={() => setOpen(true)} aria-label="Open Learning Hub" title="Learning Hub" className="fixed right-5 top-20 z-[100] flex items-center gap-2 rounded-2xl', '    <button onClick={() => setOpen(true)} aria-label="Open Learning Hub" title="Learning Hub" className="hidden')
+          p.write_text(s)
+      - name: Commit and remove workflow
+        run: |
+          git rm .github/workflows/finish-learning-hub-nav.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/pages/AlgorithmWorkspace.jsx src/components/LearningHub.jsx
+          git commit -m "fix: place Learning Hub beside algorithm selector" || exit 0
+          git push
