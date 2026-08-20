@@ -377,6 +377,7 @@ const ALGORITHM_GROUPS = [
     items: [
       ["bfs", "BFS"],
       ["dfs", "DFS"],
+      ["dijkstra", "Dijkstra 🧭"],
     ],
   },
 ];
@@ -539,7 +540,7 @@ export default function AlgorithmWorkspace() {
         <div className="flex items-center gap-6">
           <div className="text-xl font-bold tracking-tight">Algo<span className="text-violet-500">Verse</span></div>
           <div className="hidden h-5 w-px bg-white/10 md:block" />
-          <select value={algorithm} onChange={(event) => setAlgorithm(event.target.value)} className="rounded-lg border border-white/10 bg-[#09090b] px-3 py-2 text-sm text-white outline-none focus:border-violet-500/50">
+          <select value={algorithm} onChange={(event) => { const value = event.target.value; if (value === "dijkstra") { window.dispatchEvent(new CustomEvent("algoverso:open-dijkstra")); return; } setAlgorithm(value); }} className="rounded-lg border border-white/10 bg-[#09090b] px-3 py-2 text-sm text-white outline-none focus:border-violet-500/50">
             {ALGORITHM_GROUPS.map((group) => <optgroup key={group.label} label={group.label} className="bg-[#09090b]">{group.items.map(([value, label]) => <option key={value} value={value} className="bg-[#09090b]">{label}</option>)}</optgroup>)}
           </select>
         </div>
