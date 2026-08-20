@@ -5,7 +5,6 @@ import PracticeMode from "./components/PracticeMode.jsx";
 import DSANotes from "./components/DSANotes.jsx";
 import MSTLab from "./components/MSTLab.jsx";
 import ShortestPathLab from "./components/ShortestPathLab.jsx";
-import ShortestPathLab from "./components/ShortestPathLab.jsx";
 
 function App() {
   const [practiceOpen, setPracticeOpen] = useState(false);
@@ -13,7 +12,52 @@ function App() {
   const [mstOpen, setMstOpen] = useState(false);
   const [shortestPathOpen, setShortestPathOpen] = useState(false);
   const [shortestPathAlgorithm, setShortestPathAlgorithm] = useState("bellman");
-  const [shortestPathOpen, setShortestPathOpen] = useState(false);
+
+  useEffect(() => {
+    const select = document.querySelector("select");
+    if (!select) return;
+
+    const graphGroup = Array.from(select.querySelectorAll("optgroup")).find(
+      (group) => group.label === "Graph"
+    );
+    if (!graphGroup) return;
+
+    [["bellmanFord", "Bellman-Ford ⚡"], ["floydWarshall", "Floyd-Warshall ▦"]].forEach(([value, label]) => {
+      if (!select.querySelector(`option[value="${value}"]`)) {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = label;
+        option.className = "bg-[#09090b]";
+        graphGroup.appendChild(option);
+      }
+    });
+
+    const handleChange = (event) => {
+      const value = event.target.value;
+      if (value !== "bellmanFord" && value !== "floydWarshall") return;
+      event.preventDefault();
+      event.stopPropagation();
+      select.value = select.dataset.previousValue || "bfs";
+      setShortestPathAlgorithm(value === "floydWarshall" ? "floyd" : "bellman");
+      setShortestPathOpen(true);
+    };
+
+    const rememberValue = (event) => {
+      const value = event.target.value;
+      if (value !== "bellmanFord" && value !== "floydWarshall") {
+        select.dataset.previousValue = value;
+      }
+    };
+
+    select.dataset.previousValue = select.value;
+    select.addEventListener("change", handleChange, true);
+    select.addEventListener("change", rememberValue);
+
+    return () => {
+      select.removeEventListener("change", handleChange, true);
+      select.removeEventListener("change", rememberValue);
+    };
+  });
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -22,19 +66,10 @@ function App() {
         setNotesOpen(false);
         setMstOpen(false);
         setShortestPathOpen(false);
-        setShortestPathOpen(false);
       }
     };
-    const onShortestPath = (event) => {
-      setShortestPathAlgorithm(event.detail === "floydWarshall" ? "floyd" : "bellman");
-      setShortestPathOpen(true);
-    };
-    window.addEventListener("algoverso:open-shortest-path", onShortestPath);
     window.addEventListener("keydown", onKeyDown);
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("algoverso:open-shortest-path", onShortestPath);
-    };
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
   return (
@@ -54,7 +89,6 @@ function App() {
       {notesOpen && <DSANotes onClose={() => setNotesOpen(false)} />}
       {mstOpen && <MSTLab onClose={() => setMstOpen(false)} />}
       {shortestPathOpen && <ShortestPathLab onClose={() => setShortestPathOpen(false)} initialAlgorithm={shortestPathAlgorithm} />}
-      {shortestPathOpen && <ShortestPathLab onClose={() => setShortestPathOpen(false)} />}
     </>
   );
 }
