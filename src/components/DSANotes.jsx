@@ -1,29 +1,201 @@
 import { useMemo, useState } from "react";
 
 const NOTES = [
-  { id: "arrays", title: "Arrays", icon: "▦", level: "Foundation", summary: "Contiguous elements accessed by index.", sections: [{ h: "Core idea", p: "An array stores elements in contiguous memory, which makes direct index access fast." }, { h: "Complexity", p: "Access is O(1). Searching is O(n) without ordering. Inserting or deleting in the middle is usually O(n) because elements may need to shift." }, { h: "Remember", p: "Arrays are excellent when you need fast indexed access and relatively stable size." }] },
-  { id: "linked-list", title: "Linked Lists", icon: "⛓", level: "Foundation", summary: "Nodes connected through references.", sections: [{ h: "Core idea", p: "Each node stores data and a reference to another node. A singly linked list points forward." }, { h: "Complexity", p: "Access by position is O(n), while insertion or deletion can be O(1) when the relevant node or position is already known." }, { h: "Remember", p: "Linked lists trade fast random access for flexible insertion and deletion." }] },
-  { id: "stack", title: "Stack", icon: "▥", level: "Foundation", summary: "LIFO: last in, first out.", sections: [{ h: "Core idea", p: "The most recently inserted item is removed first. Main operations are push, pop, and peek/top." }, { h: "Complexity", p: "Push, pop, and peek are normally O(1)." }, { h: "Applications", p: "Function calls, undo systems, expression evaluation, backtracking, and DFS." }] },
-  { id: "queue", title: "Queue", icon: "⇥", level: "Foundation", summary: "FIFO: first in, first out.", sections: [{ h: "Core idea", p: "The earliest inserted item leaves first. Main operations are enqueue and dequeue." }, { h: "Complexity", p: "With a suitable implementation, enqueue and dequeue are O(1)." }, { h: "Applications", p: "Scheduling, buffering, BFS, and request processing." }] },
-  { id: "sorting", title: "Sorting", icon: "↕", level: "Algorithms", summary: "Rearranging data into an ordered sequence.", sections: [{ h: "Key algorithms", p: "Bubble and insertion sort are simple but can be O(n²). Merge sort and average-case quicksort are O(n log n). Heap sort is O(n log n)." }, { h: "Stable vs unstable", p: "A stable sort preserves the relative order of equal elements. Merge sort and insertion sort are commonly stable; standard heap sort is not." }, { h: "Choosing", p: "Prefer simple sorts for small or nearly sorted data. Use O(n log n) algorithms for larger datasets." }] },
-  { id: "searching", title: "Searching", icon: "⌕", level: "Algorithms", summary: "Finding a target efficiently.", sections: [{ h: "Linear Search", p: "Checks elements one by one. Worst-case time is O(n) and it does not require sorted data." }, { h: "Binary Search", p: "Requires sorted data and repeatedly halves the search range. Time is O(log n)." }, { h: "Remember", p: "Binary Search is fast because it discards half of the remaining possibilities after each comparison." }] },
-  { id: "trees", title: "Trees", icon: "⌘", level: "Structures", summary: "Hierarchical data organized by parent-child relationships.", sections: [{ h: "Terminology", p: "The root is the top node. Leaves have no children. Height measures the longest path downward." }, { h: "Binary Search Tree", p: "A BST maintains an ordering: smaller values are placed to the left and larger values to the right. Balanced trees can provide O(log n) search." }, { h: "Traversal", p: "Preorder visits root-left-right, inorder visits left-root-right, and postorder visits left-right-root." }] },
-  { id: "heap", title: "Heap", icon: "◆", level: "Structures", summary: "A tree-based priority structure.", sections: [{ h: "Core idea", p: "A max heap keeps the largest element at the root. A min heap keeps the smallest element at the root." }, { h: "Complexity", p: "Peek is O(1). Insert and extract are O(log n). Building a heap can be done in O(n)." }, { h: "Applications", p: "Priority queues, scheduling, top-k problems, and heap sort." }] },
-  { id: "graphs", title: "Graphs", icon: "⌁", level: "Structures", summary: "Vertices connected by edges.", sections: [{ h: "Core idea", p: "Graphs can be directed or undirected, weighted or unweighted. They model relationships and networks." }, { h: "BFS and DFS", p: "BFS explores level by level using a queue. DFS explores deeply using recursion or a stack. Both are O(V + E) with adjacency lists." }, { h: "Dijkstra", p: "Dijkstra finds shortest paths from a source when edge weights are non-negative. It repeatedly finalizes the closest unsettled vertex." }] },
-  { id: "complexity", title: "Complexity", icon: "O", level: "Fundamentals", summary: "A quick guide to measuring algorithm growth.", sections: [{ h: "Big-O", p: "Big-O describes how runtime or memory grows as input size increases, focusing on the dominant growth term." }, { h: "Common orders", p: "O(1) is constant, O(log n) grows slowly, O(n) is linear, O(n log n) is common for efficient sorting, and O(n²) grows much faster." }, { h: "Rule of thumb", p: "When comparing algorithms, consider both time and space, then choose based on input size and constraints." }] },
+  {
+    id: "arrays",
+    title: "Arrays",
+    icon: "▦",
+    level: "Foundation",
+    summary: "Contiguous elements accessed by index.",
+    sections: [
+      ["Core idea", "An array stores elements in contiguous memory, which makes direct index access fast."],
+      ["Complexity", "Access is O(1). Searching is O(n) without ordering. Inserting or deleting in the middle is usually O(n)."],
+      ["Remember", "Arrays are excellent when you need fast indexed access and a relatively stable size."],
+    ],
+  },
+  {
+    id: "linked-list",
+    title: "Linked Lists",
+    icon: "⛓",
+    level: "Foundation",
+    summary: "Nodes connected through references.",
+    sections: [
+      ["Core idea", "Each node stores data and a reference to another node. A singly linked list points forward."],
+      ["Complexity", "Access by position is O(n), while insertion or deletion can be O(1) when the relevant node or position is already known."],
+      ["Remember", "Linked lists trade fast random access for flexible insertion and deletion."],
+    ],
+  },
+  {
+    id: "stack",
+    title: "Stack",
+    icon: "▥",
+    level: "Foundation",
+    summary: "LIFO: last in, first out.",
+    sections: [
+      ["Core idea", "The most recently inserted item is removed first. Main operations are push, pop, and peek."],
+      ["Complexity", "Push, pop, and peek are normally O(1)."],
+      ["Applications", "Function calls, undo systems, expression evaluation, backtracking, and DFS."],
+    ],
+  },
+  {
+    id: "queue",
+    title: "Queue",
+    icon: "⇥",
+    level: "Foundation",
+    summary: "FIFO: first in, first out.",
+    sections: [
+      ["Core idea", "The earliest inserted item leaves first. Main operations are enqueue and dequeue."],
+      ["Complexity", "With a suitable implementation, enqueue and dequeue are O(1)."],
+      ["Applications", "Scheduling, buffering, BFS, and request processing."],
+    ],
+  },
+  {
+    id: "sorting",
+    title: "Sorting",
+    icon: "↕",
+    level: "Algorithms",
+    summary: "Rearranging data into an ordered sequence.",
+    sections: [
+      ["Key algorithms", "Bubble and insertion sort can be O(n²). Merge sort and average-case quicksort are O(n log n). Heap sort is O(n log n)."],
+      ["Stable vs unstable", "A stable sort preserves the relative order of equal elements. Merge sort and insertion sort are commonly stable; standard heap sort is not."],
+      ["Choosing", "Prefer simple sorts for small or nearly sorted data. Use O(n log n) algorithms for larger datasets."],
+    ],
+  },
+  {
+    id: "searching",
+    title: "Searching",
+    icon: "⌕",
+    level: "Algorithms",
+    summary: "Finding a target efficiently.",
+    sections: [
+      ["Linear Search", "Checks elements one by one. Worst-case time is O(n) and it does not require sorted data."],
+      ["Binary Search", "Requires sorted data and repeatedly halves the search range. Time is O(log n)."],
+      ["Remember", "Binary Search is fast because it discards half of the remaining possibilities after each comparison."],
+    ],
+  },
+  {
+    id: "trees",
+    title: "Trees",
+    icon: "⌘",
+    level: "Structures",
+    summary: "Hierarchical data organized by parent-child relationships.",
+    sections: [
+      ["Terminology", "The root is the top node. Leaves have no children. Height measures the longest path downward."],
+      ["Binary Search Tree", "A BST maintains an ordering: smaller values are placed to the left and larger values to the right. Balanced trees can provide O(log n) search."],
+      ["Traversal", "Preorder is root-left-right, inorder is left-root-right, and postorder is left-right-root."],
+    ],
+  },
+  {
+    id: "heap",
+    title: "Heap",
+    icon: "◆",
+    level: "Structures",
+    summary: "A tree-based priority structure.",
+    sections: [
+      ["Core idea", "A max heap keeps the largest element at the root. A min heap keeps the smallest element at the root."],
+      ["Complexity", "Peek is O(1). Insert and extract are O(log n). Building a heap can be done in O(n)."],
+      ["Applications", "Priority queues, scheduling, top-k problems, and heap sort."],
+    ],
+  },
+  {
+    id: "graphs",
+    title: "Graphs",
+    icon: "⌁",
+    level: "Structures",
+    summary: "Vertices connected by edges.",
+    sections: [
+      ["Core idea", "Graphs can be directed or undirected, weighted or unweighted. They model relationships and networks."],
+      ["BFS and DFS", "BFS explores level by level using a queue. DFS explores deeply using recursion or a stack. Both are O(V + E) with adjacency lists."],
+      ["Dijkstra", "Dijkstra finds shortest paths from a source when edge weights are non-negative."],
+    ],
+  },
+  {
+    id: "complexity",
+    title: "Complexity",
+    icon: "O",
+    level: "Fundamentals",
+    summary: "A quick guide to measuring algorithm growth.",
+    sections: [
+      ["Big-O", "Big-O describes how runtime or memory grows as input size increases, focusing on the dominant growth term."],
+      ["Common orders", "O(1) is constant, O(log n) grows slowly, O(n) is linear, O(n log n) is common for efficient sorting, and O(n²) grows much faster."],
+      ["Rule of thumb", "When comparing algorithms, consider both time and space, then choose based on input size and constraints."],
+    ],
+  },
 ];
 
 export default function DSANotes({ onClose }) {
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState("All");
   const [selected, setSelected] = useState(NOTES[0].id);
-  const levels = ["All", ...new Set(NOTES.map((n) => n.level))];
-  const filtered = useMemo(() => NOTES.filter((n) => (level === "All" || n.level === level) && `${n.title} ${n.summary}`.toLowerCase().includes(query.toLowerCase())), [query, level]);
-  const note = NOTES.find((n) => n.id === selected) || filtered[0] || NOTES[0];
 
-  return <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/85 p-3 backdrop-blur-md sm:p-6"><div className="flex h-[min(900px,94vh)] w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#09090d] shadow-2xl shadow-black/70">
-    <header className="flex shrink-0 items-center justify-between border-b border-white/10 px-5 py-4"><div><p className="text-[10px] uppercase tracking-[0.2em] text-violet-400">AlgoVerse · Revision</p><h2 className="mt-1 text-xl font-semibold">DSA Notes</h2><p className="mt-1 text-xs text-gray-600">Quick concepts, complexities, and exam-ready reminders.</p></div><button onClick={onClose} className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-gray-400 hover:text-white">✕ Close</button></header>
-    <div className="flex min-h-0 flex-1 flex-col md:flex-row"><aside className="w-full shrink-0 border-b border-white/10 md:w-72 md:border-b-0 md:border-r"><div className="p-4"><input value={query} onChange={(e)=>setQuery(e.target.value)} placeholder="Search notes..." className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-xs text-white outline-none placeholder:text-gray-700 focus:border-violet-500/30" /><div className="mt-3 flex gap-1 overflow-x-auto md:flex-wrap">{levels.map((item)=><button key={item} onClick={()=>setLevel(item)} className={`whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[9px] ${level===item?'bg-violet-500/15 text-violet-200':'text-gray-600 hover:text-white'}`}>{item}</button>)}</div></div><div className="max-h-48 overflow-y-auto px-2 pb-3 md:max-h-none">{filtered.map((item)=><button key={item.id} onClick={()=>setSelected(item.id)} className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition ${note.id===item.id?'bg-violet-500/10 text-white':'text-gray-500 hover:bg-white/[0.03] hover:text-gray-200'}`}><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-xs text-violet-300">{item.icon}</span><span><span className="block text-xs font-medium">{item.title}</span><span className="mt-0.5 block text-[9px] text-gray-700">{item.level}</span></span></button>)}{!filtered.length&&<p className="px-3 py-5 text-xs text-gray-600">No notes found.</p>}</div></aside>
-    <main className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-8"><div className="max-w-3xl"><div className="flex items-center gap-3"><span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-violet-400/20 bg-violet-500/10 text-lg text-violet-200">{note.icon}</span><div><p className="text-[9px] uppercase tracking-widest text-violet-400">{note.level}</p><h3 className="mt-1 text-2xl font-semibold text-white">{note.title}</h3></div></div><p className="mt-5 text-sm leading-6 text-gray-400">{note.summary}</p><div className="mt-7 space-y-4">{note.sections.map((section)=><section key={section.h} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"><h4 className="text-sm font-semibold text-gray-200">{section.h}</h4><p className="mt-2 text-xs leading-6 text-gray-500">{section.p}</p></section>)}</div><div className="mt-6 rounded-2xl border border-emerald-500/15 bg-emerald-500/[0.04] p-5"><p className="text-[9px] uppercase tracking-widest text-emerald-400">Quick revision</p><p className="mt-2 text-xs leading-6 text-gray-400">Focus on the core idea first, then memorize the key complexity and one practical use case.</p></div></div></main>
-  </div></div>;
+  const levels = ["All", ...new Set(NOTES.map((note) => note.level))];
+  const filtered = useMemo(
+    () => NOTES.filter((note) => {
+      const matchesLevel = level === "All" || note.level === level;
+      const text = `${note.title} ${note.summary}`.toLowerCase();
+      return matchesLevel && text.includes(query.toLowerCase());
+    }),
+    [query, level]
+  );
+
+  const note = NOTES.find((item) => item.id === selected) || filtered[0] || NOTES[0];
+
+  return (
+    <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/85 p-3 backdrop-blur-md sm:p-6">
+      <div className="flex h-[min(900px,94vh)] w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#09090d] shadow-2xl shadow-black/70">
+        <header className="flex shrink-0 items-center justify-between border-b border-white/10 px-5 py-4">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-violet-400">AlgoVerse · Revision</p>
+            <h2 className="mt-1 text-xl font-semibold">DSA Notes</h2>
+            <p className="mt-1 text-xs text-gray-600">Quick concepts, complexities, and exam-ready reminders.</p>
+          </div>
+          <button onClick={onClose} className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-gray-400 hover:text-white">✕ Close</button>
+        </header>
+
+        <div className="flex min-h-0 flex-1 flex-col md:flex-row">
+          <aside className="w-full shrink-0 border-b border-white/10 md:w-72 md:border-b-0 md:border-r">
+            <div className="p-4">
+              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search notes..." className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-xs text-white outline-none placeholder:text-gray-700 focus:border-violet-500/30" />
+              <div className="mt-3 flex gap-1 overflow-x-auto md:flex-wrap">
+                {levels.map((item) => (
+                  <button key={item} onClick={() => setLevel(item)} className={`whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[9px] ${level === item ? "bg-violet-500/15 text-violet-200" : "text-gray-600 hover:text-white"}`}>{item}</button>
+                ))}
+              </div>
+            </div>
+            <div className="max-h-48 overflow-y-auto px-2 pb-3 md:max-h-none">
+              {filtered.map((item) => (
+                <button key={item.id} onClick={() => setSelected(item.id)} className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition ${note.id === item.id ? "bg-violet-500/10 text-white" : "text-gray-500 hover:bg-white/[0.03] hover:text-gray-200"}`}>
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-xs text-violet-300">{item.icon}</span>
+                  <span><span className="block text-xs font-medium">{item.title}</span><span className="mt-0.5 block text-[9px] text-gray-700">{item.level}</span></span>
+                </button>
+              ))}
+              {!filtered.length && <p className="px-3 py-5 text-xs text-gray-600">No notes found.</p>}
+            </div>
+          </aside>
+
+          <main className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-8">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-violet-400/20 bg-violet-500/10 text-lg text-violet-200">{note.icon}</span>
+                <div><p className="text-[9px] uppercase tracking-widest text-violet-400">{note.level}</p><h3 className="mt-1 text-2xl font-semibold text-white">{note.title}</h3></div>
+              </div>
+              <p className="mt-5 text-sm leading-6 text-gray-400">{note.summary}</p>
+              <div className="mt-7 space-y-4">
+                {note.sections.map(([heading, text]) => (
+                  <section key={heading} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
+                    <h4 className="text-sm font-semibold text-gray-200">{heading}</h4>
+                    <p className="mt-2 text-xs leading-6 text-gray-500">{text}</p>
+                  </section>
+                ))}
+              </div>
+              <div className="mt-6 rounded-2xl border border-emerald-500/15 bg-emerald-500/[0.04] p-5">
+                <p className="text-[9px] uppercase tracking-widest text-emerald-400">Quick revision</p>
+                <p className="mt-2 text-xs leading-6 text-gray-400">Focus on the core idea first, then memorize the key complexity and one practical use case.</p>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  );
 }
