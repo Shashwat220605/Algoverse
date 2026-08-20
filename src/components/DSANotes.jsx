@@ -8,9 +8,9 @@ const NOTES = [
     level: "Foundation",
     summary: "Contiguous elements accessed by index.",
     sections: [
-      ["Core idea", "An array stores elements in contiguous memory, which makes direct index access fast."],
-      ["Complexity", "Access is O(1). Searching is O(n) without ordering. Inserting or deleting in the middle is usually O(n)."],
-      ["Remember", "Arrays are excellent when you need fast indexed access and a relatively stable size."],
+      { h: "Core idea", p: "An array stores elements in contiguous memory, which makes direct index access fast." },
+      { h: "Complexity", p: "Access is O(1). Searching is O(n) without ordering. Inserting or deleting in the middle is usually O(n)." },
+      { h: "Remember", p: "Arrays are excellent when you need fast indexed access." },
     ],
   },
   {
@@ -20,9 +20,9 @@ const NOTES = [
     level: "Foundation",
     summary: "Nodes connected through references.",
     sections: [
-      ["Core idea", "Each node stores data and a reference to another node. A singly linked list points forward."],
-      ["Complexity", "Access by position is O(n), while insertion or deletion can be O(1) when the relevant node or position is already known."],
-      ["Remember", "Linked lists trade fast random access for flexible insertion and deletion."],
+      { h: "Core idea", p: "Each node stores data and a reference to another node. A singly linked list points forward." },
+      { h: "Complexity", p: "Access by position is O(n), while insertion or deletion can be O(1) when the relevant position is known." },
+      { h: "Remember", p: "Linked lists trade fast random access for flexible insertion and deletion." },
     ],
   },
   {
@@ -32,9 +32,9 @@ const NOTES = [
     level: "Foundation",
     summary: "LIFO: last in, first out.",
     sections: [
-      ["Core idea", "The most recently inserted item is removed first. Main operations are push, pop, and peek."],
-      ["Complexity", "Push, pop, and peek are normally O(1)."],
-      ["Applications", "Function calls, undo systems, expression evaluation, backtracking, and DFS."],
+      { h: "Core idea", p: "The most recently inserted item is removed first. Main operations are push, pop, and peek." },
+      { h: "Complexity", p: "Push, pop, and peek are normally O(1)." },
+      { h: "Applications", p: "Function calls, undo systems, expression evaluation, backtracking, and DFS." },
     ],
   },
   {
@@ -44,9 +44,9 @@ const NOTES = [
     level: "Foundation",
     summary: "FIFO: first in, first out.",
     sections: [
-      ["Core idea", "The earliest inserted item leaves first. Main operations are enqueue and dequeue."],
-      ["Complexity", "With a suitable implementation, enqueue and dequeue are O(1)."],
-      ["Applications", "Scheduling, buffering, BFS, and request processing."],
+      { h: "Core idea", p: "The earliest inserted item leaves first. Main operations are enqueue and dequeue." },
+      { h: "Complexity", p: "With a suitable implementation, enqueue and dequeue are O(1)." },
+      { h: "Applications", p: "Scheduling, buffering, BFS, and request processing." },
     ],
   },
   {
@@ -56,9 +56,9 @@ const NOTES = [
     level: "Algorithms",
     summary: "Rearranging data into an ordered sequence.",
     sections: [
-      ["Key algorithms", "Bubble and insertion sort can be O(n²). Merge sort and average-case quicksort are O(n log n). Heap sort is O(n log n)."],
-      ["Stable vs unstable", "A stable sort preserves the relative order of equal elements. Merge sort and insertion sort are commonly stable; standard heap sort is not."],
-      ["Choosing", "Prefer simple sorts for small or nearly sorted data. Use O(n log n) algorithms for larger datasets."],
+      { h: "Key algorithms", p: "Bubble and insertion sort can be O(n²). Merge sort and average-case quicksort are O(n log n). Heap sort is O(n log n)." },
+      { h: "Stable vs unstable", p: "A stable sort preserves the relative order of equal elements. Merge sort and insertion sort are commonly stable." },
+      { h: "Choosing", p: "Use simple sorts for small or nearly sorted data and O(n log n) algorithms for larger datasets." },
     ],
   },
   {
@@ -68,9 +68,9 @@ const NOTES = [
     level: "Algorithms",
     summary: "Finding a target efficiently.",
     sections: [
-      ["Linear Search", "Checks elements one by one. Worst-case time is O(n) and it does not require sorted data."],
-      ["Binary Search", "Requires sorted data and repeatedly halves the search range. Time is O(log n)."],
-      ["Remember", "Binary Search is fast because it discards half of the remaining possibilities after each comparison."],
+      { h: "Linear Search", p: "Checks elements one by one. Worst-case time is O(n) and it does not require sorted data." },
+      { h: "Binary Search", p: "Requires sorted data and repeatedly halves the search range. Time is O(log n)." },
+      { h: "Remember", p: "Binary Search is fast because it discards half of the remaining possibilities after each comparison." },
     ],
   },
   {
@@ -80,9 +80,9 @@ const NOTES = [
     level: "Structures",
     summary: "Hierarchical data organized by parent-child relationships.",
     sections: [
-      ["Terminology", "The root is the top node. Leaves have no children. Height measures the longest path downward."],
-      ["Binary Search Tree", "A BST maintains an ordering: smaller values are placed to the left and larger values to the right. Balanced trees can provide O(log n) search."],
-      ["Traversal", "Preorder is root-left-right, inorder is left-root-right, and postorder is left-right-root."],
+      { h: "Terminology", p: "The root is the top node. Leaves have no children. Height measures the longest path downward." },
+      { h: "Binary Search Tree", p: "A BST places smaller values to the left and larger values to the right. Balanced trees can provide O(log n) search." },
+      { h: "Traversal", p: "Preorder is root-left-right, inorder is left-root-right, and postorder is left-right-root." },
     ],
   },
   {
@@ -92,9 +92,9 @@ const NOTES = [
     level: "Structures",
     summary: "A tree-based priority structure.",
     sections: [
-      ["Core idea", "A max heap keeps the largest element at the root. A min heap keeps the smallest element at the root."],
-      ["Complexity", "Peek is O(1). Insert and extract are O(log n). Building a heap can be done in O(n)."],
-      ["Applications", "Priority queues, scheduling, top-k problems, and heap sort."],
+      { h: "Core idea", p: "A max heap keeps the largest element at the root. A min heap keeps the smallest element at the root." },
+      { h: "Complexity", p: "Peek is O(1). Insert and extract are O(log n). Building a heap can be done in O(n)." },
+      { h: "Applications", p: "Priority queues, scheduling, top-k problems, and heap sort." },
     ],
   },
   {
@@ -104,9 +104,9 @@ const NOTES = [
     level: "Structures",
     summary: "Vertices connected by edges.",
     sections: [
-      ["Core idea", "Graphs can be directed or undirected, weighted or unweighted. They model relationships and networks."],
-      ["BFS and DFS", "BFS explores level by level using a queue. DFS explores deeply using recursion or a stack. Both are O(V + E) with adjacency lists."],
-      ["Dijkstra", "Dijkstra finds shortest paths from a source when edge weights are non-negative."],
+      { h: "Core idea", p: "Graphs can be directed or undirected, weighted or unweighted. They model relationships and networks." },
+      { h: "BFS and DFS", p: "BFS explores level by level using a queue. DFS explores deeply using recursion or a stack. Both are O(V + E) with adjacency lists." },
+      { h: "Dijkstra", p: "Dijkstra finds shortest paths from a source when edge weights are non-negative." },
     ],
   },
   {
@@ -116,9 +116,9 @@ const NOTES = [
     level: "Fundamentals",
     summary: "A quick guide to measuring algorithm growth.",
     sections: [
-      ["Big-O", "Big-O describes how runtime or memory grows as input size increases, focusing on the dominant growth term."],
-      ["Common orders", "O(1) is constant, O(log n) grows slowly, O(n) is linear, O(n log n) is common for efficient sorting, and O(n²) grows much faster."],
-      ["Rule of thumb", "When comparing algorithms, consider both time and space, then choose based on input size and constraints."],
+      { h: "Big-O", p: "Big-O describes how runtime or memory grows as input size increases, focusing on the dominant growth term." },
+      { h: "Common orders", p: "O(1) is constant, O(log n) grows slowly, O(n) is linear, O(n log n) is common for efficient sorting, and O(n²) grows much faster." },
+      { h: "Rule of thumb", p: "Consider both time and space, then choose based on input size and constraints." },
     ],
   },
 ];
@@ -129,14 +129,14 @@ export default function DSANotes({ onClose }) {
   const [selected, setSelected] = useState(NOTES[0].id);
 
   const levels = ["All", ...new Set(NOTES.map((note) => note.level))];
-  const filtered = useMemo(
-    () => NOTES.filter((note) => {
+  const filtered = useMemo(() => {
+    const search = query.trim().toLowerCase();
+    return NOTES.filter((note) => {
       const matchesLevel = level === "All" || note.level === level;
-      const text = `${note.title} ${note.summary}`.toLowerCase();
-      return matchesLevel && text.includes(query.toLowerCase());
-    }),
-    [query, level]
-  );
+      const matchesSearch = !search || `${note.title} ${note.summary}`.toLowerCase().includes(search);
+      return matchesLevel && matchesSearch;
+    });
+  }, [query, level]);
 
   const note = NOTES.find((item) => item.id === selected) || filtered[0] || NOTES[0];
 
@@ -146,7 +146,7 @@ export default function DSANotes({ onClose }) {
         <header className="flex shrink-0 items-center justify-between border-b border-white/10 px-5 py-4">
           <div>
             <p className="text-[10px] uppercase tracking-[0.2em] text-violet-400">AlgoVerse · Revision</p>
-            <h2 className="mt-1 text-xl font-semibold">DSA Notes</h2>
+            <h2 className="mt-1 text-xl font-semibold text-white">DSA Notes</h2>
             <p className="mt-1 text-xs text-gray-600">Quick concepts, complexities, and exam-ready reminders.</p>
           </div>
           <button onClick={onClose} className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-gray-400 hover:text-white">✕ Close</button>
@@ -181,17 +181,11 @@ export default function DSANotes({ onClose }) {
               </div>
               <p className="mt-5 text-sm leading-6 text-gray-400">{note.summary}</p>
               <div className="mt-7 space-y-4">
-                {note.sections.map(([heading, text]) => (
-                  <section key={heading} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
-                    <h4 className="text-sm font-semibold text-gray-200">{heading}</h4>
-                    <p className="mt-2 text-xs leading-6 text-gray-500">{text}</p>
-                  </section>
+                {note.sections.map((section) => (
+                  <section key={section.h} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"><h4 className="text-sm font-semibold text-gray-200">{section.h}</h4><p className="mt-2 text-xs leading-6 text-gray-500">{section.p}</p></section>
                 ))}
               </div>
-              <div className="mt-6 rounded-2xl border border-emerald-500/15 bg-emerald-500/[0.04] p-5">
-                <p className="text-[9px] uppercase tracking-widest text-emerald-400">Quick revision</p>
-                <p className="mt-2 text-xs leading-6 text-gray-400">Focus on the core idea first, then memorize the key complexity and one practical use case.</p>
-              </div>
+              <div className="mt-6 rounded-2xl border border-emerald-500/15 bg-emerald-500/[0.04] p-5"><p className="text-[9px] uppercase tracking-widest text-emerald-400">Quick revision</p><p className="mt-2 text-xs leading-6 text-gray-400">Focus on the core idea first, then memorize the key complexity and one practical use case.</p></div>
             </div>
           </main>
         </div>
