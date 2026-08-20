@@ -378,6 +378,7 @@ const ALGORITHM_GROUPS = [
       ["bfs", "BFS"],
       ["dfs", "DFS"],
       ["dijkstra", "Dijkstra 🧭"],
+      ["dijkstra", "Dijkstra 🧭"],
     ],
   },
 ];
