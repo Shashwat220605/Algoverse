@@ -378,6 +378,8 @@ const ALGORITHM_GROUPS = [
       ["bfs", "BFS"],
       ["dfs", "DFS"],
       ["dijkstra", "Dijkstra 🧭"],
+      ["bellmanFord", "Bellman-Ford ⚡"],
+      ["floydWarshall", "Floyd-Warshall ▦"],
     ],
   },
 ];
@@ -443,6 +445,13 @@ export default function AlgorithmWorkspace() {
   const [error, setError] = useState("");
   const currentAlgorithm = ALGORITHMS[algorithm];
   const selectedAlgorithmName = ALGORITHM_GROUPS.flatMap((group) => group.items).find(([value]) => value === algorithm)?.[1] || "Select Algorithm";
+
+  useEffect(() => {
+    if (algorithm === "bellmanFord" || algorithm === "floydWarshall") {
+      window.dispatchEvent(new CustomEvent("algoverso:open-shortest-path", { detail: algorithm }));
+      setAlgorithm("bfs");
+    }
+  }, [algorithm]);
 
   useEffect(() => {
     setError("");
@@ -540,7 +549,7 @@ export default function AlgorithmWorkspace() {
         <div className="flex items-center gap-6">
           <div className="text-xl font-bold tracking-tight">Algo<span className="text-violet-500">Verse</span></div>
           <div className="hidden h-5 w-px bg-white/10 md:block" />
-          <select value={algorithm} onChange={(event) => { const value = event.target.value; if (value === "dijkstra") { window.dispatchEvent(new CustomEvent("algoverso:open-dijkstra")); return; } setAlgorithm(value); }} className="rounded-lg border border-white/10 bg-[#09090b] px-3 py-2 text-sm text-white outline-none focus:border-violet-500/50">
+          <select value={algorithm} onChange={(event) => { const value = event.target.value; if (value === "dijkstra" || value === "bellmanFord" || value === "floydWarshall") { window.dispatchEvent(new CustomEvent(value === "dijkstra" ? "algoverso:open-dijkstra" : "algoverso:open-shortest-path", { detail: value })); return; } setAlgorithm(value); }} className="rounded-lg border border-white/10 bg-[#09090b] px-3 py-2 text-sm text-white outline-none focus:border-violet-500/50">
             {ALGORITHM_GROUPS.map((group) => <optgroup key={group.label} label={group.label} className="bg-[#09090b]">{group.items.map(([value, label]) => <option key={value} value={value} className="bg-[#09090b]">{label}</option>)}</optgroup>)}
           </select>
           <button onClick={() => window.dispatchEvent(new CustomEvent("algoverso:open-learning-hub"))} className="rounded-lg border border-violet-400/20 bg-violet-500/10 px-3 py-2 text-xs font-semibold text-violet-200 transition hover:bg-violet-500/20">✦ Learning Hub</button>

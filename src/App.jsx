@@ -5,11 +5,14 @@ import PracticeMode from "./components/PracticeMode.jsx";
 import DSANotes from "./components/DSANotes.jsx";
 import MSTLab from "./components/MSTLab.jsx";
 import ShortestPathLab from "./components/ShortestPathLab.jsx";
+import ShortestPathLab from "./components/ShortestPathLab.jsx";
 
 function App() {
   const [practiceOpen, setPracticeOpen] = useState(false);
   const [notesOpen, setNotesOpen] = useState(false);
   const [mstOpen, setMstOpen] = useState(false);
+  const [shortestPathOpen, setShortestPathOpen] = useState(false);
+  const [shortestPathAlgorithm, setShortestPathAlgorithm] = useState("bellman");
   const [shortestPathOpen, setShortestPathOpen] = useState(false);
 
   useEffect(() => {
@@ -19,10 +22,19 @@ function App() {
         setNotesOpen(false);
         setMstOpen(false);
         setShortestPathOpen(false);
+        setShortestPathOpen(false);
       }
     };
+    const onShortestPath = (event) => {
+      setShortestPathAlgorithm(event.detail === "floydWarshall" ? "floyd" : "bellman");
+      setShortestPathOpen(true);
+    };
+    window.addEventListener("algoverso:open-shortest-path", onShortestPath);
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("algoverso:open-shortest-path", onShortestPath);
+    };
   }, []);
 
   return (
@@ -41,6 +53,7 @@ function App() {
       {practiceOpen && <PracticeMode onClose={() => setPracticeOpen(false)} />}
       {notesOpen && <DSANotes onClose={() => setNotesOpen(false)} />}
       {mstOpen && <MSTLab onClose={() => setMstOpen(false)} />}
+      {shortestPathOpen && <ShortestPathLab onClose={() => setShortestPathOpen(false)} initialAlgorithm={shortestPathAlgorithm} />}
       {shortestPathOpen && <ShortestPathLab onClose={() => setShortestPathOpen(false)} />}
     </>
   );
