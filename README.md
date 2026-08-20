@@ -1,115 +1,45 @@
 # AlgoVerse
 
-### Interactive Data Structures & Algorithms Visualization Workspace
+> **Don't just read the algorithm. Watch it execute.**
 
-AlgoVerse is an interactive DSA learning workspace that lets users **see algorithms execute step by step** instead of only reading their source code or viewing the final result.
+An interactive Data Structures & Algorithms learning platform built with React, Vite, Tailwind CSS, Three.js, React Three Fiber, Drei, and GSAP. AlgoVerse turns algorithms into step-by-step visual experiences with execution controls, explanations, complexity information, source-code views, practice questions, and revision notes.
 
-The workspace combines algorithm visualizations, C++ implementations, execution explanations, live variables, complexity information, and an interactive input playground in one interface.
+## ✨ Highlights
 
----
-
-## ✨ Features
-
-- 🔎 Interactive searching visualizations
-- 🔄 Sorting algorithm visualizations
+- 🧠 **Step-by-step visualization** with Previous, Play, Next, and Restart controls
+- 💻 **C++, Java, and Python** implementations where supported
+- 🔎 Searching and sorting visualizations
 - 🔗 Linked List operations
-- 📚 Stack operations
-- 🚶 Queue operations
-- 🌳 Binary Tree visualizations
-- 🌲 Binary Search Tree operations
-- 🏗️ Heap visualizations
-- 🌐 Graph traversal visualizations
-- 🧠 Step-by-step algorithm execution
+- 📚 Stack and Queue operations
+- 🌳 Binary Tree, BST, and Heap visualizations
+- 🌐 Graph algorithms including BFS, DFS, Dijkstra, Prim's, Kruskal's, Bellman-Ford, and Floyd-Warshall
+- 📖 **DSA Notes** for quick revision
+- 🧪 **Practice Mode** with questions, hints, scoring, and progress
+- 📊 Complexity information and execution explanations
 - 🎯 Current code-line highlighting
-- 📊 Complexity information
-- 🧮 Live execution variables
-- 🎮 Interactive Input Playground
-- ⏮️ Previous / ▶️ Play / ⏭️ Next / Restart controls
-- 🎨 Interactive 3D visualizations for supported structures
+- 🎮 Custom input playgrounds and presets
+- 📱 Responsive, student-focused interface
+- ✨ Interactive visual scenes for supported data structures
 
----
+## 🧭 What you can explore
 
-## 🎥 Demo
-
-The following demos show the finished AlgoVerse workspace in action.
-
-### Linear Search
-
-![Linear Search Demo](./docs/demos/linear-search.gif)
-
-### Bubble Sort
-
-![Bubble Sort Demo](./docs/demos/bubble-sort.gif)
-
-### Linked List Deletion
-
-![Linked List Demo](./docs/demos/linked-list.gif)
-
-### BST Delete
-
-![BST Demo](./docs/demos/bst.gif)
-
-### Breadth First Search
-
-![BFS Demo](./docs/demos/bfs.gif)
-
-### Stack Peek
-
-![Stack Demo](./docs/demos/stack.gif)
-
----
-
-## 🖼️ Screenshots
-
-### Linear Search
-
-![Linear Search](./docs/screenshots/linear-search.png)
-
-### Binary Search Tree Search
-
-![BST Search](./docs/screenshots/bst-search.png)
-
-### Depth First Search
-
-![DFS](./docs/screenshots/dfs.png)
-
-### Queue Dequeue
-
-![Queue Dequeue](./docs/screenshots/queue-dequeue.png)
-
-### Quick Sort
-
-![Quick Sort](./docs/screenshots/quick-sort.png)
-
-### Heap Sort
-
-![Heap Sort](./docs/screenshots/heap-sort.png)
-
-### Stack Peek
-
-![Stack Peek](./docs/screenshots/stack-peek.png)
-
----
-
-## 🧠 Data Structures & Algorithms
-
-| Category | Implemented / Demonstrated |
+| Area | Algorithms / Operations |
 |---|---|
-| Searching | Linear Search, BST Search |
-| Sorting | Bubble Sort, Quick Sort, Heap Sort |
-| Linked List | Deletion |
-| Stack | Peek and stack operations |
-| Queue | Dequeue and queue operations |
-| Binary Tree | Traversal and visualization |
-| Binary Search Tree | Search, insertion/deletion operations |
-| Heap | Heap operations and Heap Sort |
-| Graph | BFS and DFS |
+| Searching | Linear Search, Binary Search |
+| Sorting | Bubble, Insertion, Selection, Merge, Quick, Heap Sort |
+| Linked List | Traversal, Insertion, Deletion |
+| Stack | Push, Pop, Peek |
+| Queue | Enqueue, Dequeue, Front |
+| Binary Tree | Preorder, Inorder, Postorder, Level Order |
+| Heap | Build Max Heap, Insert, Extract Max |
+| Binary Search Tree | Insert, Search, Delete |
+| Graph | BFS, DFS, Dijkstra, Prim's, Kruskal's, Bellman-Ford, Floyd-Warshall |
 
----
+## 🎓 Learning Tools
 
-## 🔬 How AlgoVerse Works
+### Algorithm Workspace
 
-Each algorithm is represented as a sequence of execution states.
+Select an algorithm, provide input, and run it. AlgoVerse generates execution states and connects the visualization with the algorithm implementation.
 
 ```text
 Select Algorithm
@@ -126,82 +56,79 @@ Highlight Relevant Code
        ↓
 Explain Current Step
        ↓
-Move to Next Step
-       ↓
-Algorithm Complete
+Move Through Timeline
 ```
 
-This allows the user to connect the algorithm's source code with the changes happening inside the visualization.
+### DSA Notes
 
----
+A dedicated revision area covering core concepts such as Arrays, Linked Lists, Stacks, Queues, Trees, Heaps, Graphs, Searching, Sorting, and Complexity.
+
+### Practice Mode
+
+A question-based revision system with:
+
+- Multiple-choice questions
+- Topic filtering
+- Difficulty levels
+- Hints
+- Instant feedback
+- Score tracking
+- Progress through the question set
+
+## 🌐 Graph Learning
+
+AlgoVerse includes a dedicated set of graph visualizations covering traversal, shortest paths, and minimum spanning trees.
+
+- **BFS / DFS:** graph traversal
+- **Dijkstra:** shortest paths with non-negative edge weights
+- **Bellman-Ford:** shortest paths with support for negative edge weights
+- **Floyd-Warshall:** all-pairs shortest paths
+- **Prim's:** minimum spanning tree using a growing vertex set
+- **Kruskal's:** minimum spanning tree using sorted edges
 
 ## 💻 Code + Visualization
 
-The workspace displays the algorithm implementation alongside its visualization.
+The workspace is designed to connect implementation with behavior. Depending on the algorithm, the interface can show:
 
-For each execution step, the interface can show:
+- Current data-structure state
+- Active execution step
+- Relevant source-code section
+- Explanation of the current operation
+- Complexity information
+- User-provided input
 
-- Current algorithm state
-- Relevant source-code line
-- Current data structure state
-- Explanation of the operation
-- Live execution variables
+This makes the project useful for both **learning concepts** and **visual revision before exams/interviews**.
 
-For example, during a graph traversal, the visualization can show the current node while the implementation panel displays the corresponding traversal logic.
+## 🎮 Custom Input
 
----
+Users can experiment with their own data instead of relying only on predefined examples.
 
-## 🎮 Input Playground
+Supported inputs include:
 
-AlgoVerse allows users to experiment with their own inputs instead of relying only on predefined examples.
+- Arrays and search targets
+- Linked List values and positions
+- Stack and Queue values
+- Tree and BST values
+- Graph edges and starting nodes
 
-Depending on the selected algorithm, the playground can accept:
+Presets are available for supported algorithms so users can quickly explore an example.
 
-- Array values
-- Search targets
-- Linked List values
-- Deletion positions
-- Tree values
-- BST values
-- Graph edges
-- Starting graph node
-- Stack / Queue values
+## 📊 Complexity Examples
 
-Presets are also available for supported algorithms.
-
----
-
-## ⏯️ Step-by-Step Controls
-
-The execution timeline provides controls for navigating through an algorithm:
-
-```text
-⏮ Previous
-▶ Play
-⏭ Next
-↻ Restart
-```
-
-The current execution step and total number of steps are displayed so users can inspect the algorithm one operation at a time.
-
----
-
-## 📊 Complexity Information
-
-AlgoVerse displays complexity information for the selected algorithm.
-
-Examples demonstrated in the project include:
-
-| Algorithm / Operation | Complexity |
-|---|---|
+| Algorithm | Typical Complexity |
+|---|---:|
 | Linear Search | O(n) |
-| BST Search | O(log n) avg |
-| DFS | O(V + E) |
-| Queue Dequeue | O(1) |
-| Quick Sort | O(n log n) avg |
+| Binary Search | O(log n) |
+| Merge Sort | O(n log n) |
+| Quick Sort | O(n log n) average |
 | Heap Sort | O(n log n) |
-
----
+| BFS | O(V + E) |
+| DFS | O(V + E) |
+| Dijkstra | O((V + E) log V) with a heap |
+| Bellman-Ford | O(VE) |
+| Floyd-Warshall | O(V³) |
+| Prim's | O(E log V) with a heap |
+| Kruskal's | O(E log E) |
 
 ## 🛠️ Tech Stack
 
@@ -210,162 +137,86 @@ Examples demonstrated in the project include:
 - **Vite**
 - **Tailwind CSS**
 - **Three.js**
-- **React Three Fiber / Drei**
+- **React Three Fiber**
+- **Drei**
 - **GSAP**
-- **C++** for displayed algorithm implementations
-
----
+- **GitHub**
+- **Vercel**
 
 ## 📂 Project Structure
 
 ```text
 AlgoVerse/
-│
 ├── src/
-│   ├── algorithms/
-│   ├── components/
-│   ├── scenes/
-│   ├── store/
-│   └── ...
-│
-├── public/
-│
-├── docs/
-│   ├── demos/
-│   │   ├── linear-search.gif
-│   │   ├── bubble-sort.gif
-│   │   ├── linked-list.gif
-│   │   ├── bst.gif
-│   │   ├── bfs.gif
-│   │   └── stack.gif
-│   │
-│   ├── screenshots/
-│   │   ├── linear-search.png
-│   │   ├── bst-search.png
-│   │   ├── dfs.png
-│   │   ├── queue-dequeue.png
-│   │   ├── quick-sort.png
-│   │   ├── heap-sort.png
-│   │   └── stack-peek.png
-│   │
-│   └── DOCUMENTATION.md
-│
+│   ├── algorithms/       # Algorithm logic and execution traces
+│   ├── components/       # Reusable UI, notes, practice, and panels
+│   ├── pages/            # Main algorithm workspace
+│   ├── scenes/           # Data-structure visualizations
+│   └── store/             # Execution state management
+├── public/                # Static assets
+├── docs/                  # Project documentation and media
 ├── README.md
+├── LICENSE
 ├── package.json
-├── .gitignore
-└── .env.example
+└── .gitignore
 ```
 
----
+## 🚀 Run Locally
 
-## ⚙️ Installation
-
-### 1. Clone the repository
+### 1. Clone
 
 ```bash
 git clone <YOUR_GITHUB_REPOSITORY_URL>
-```
-
-### 2. Open the project
-
-```bash
 cd AlgoVerse
 ```
 
-### 3. Install dependencies
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Start the development server
+### 3. Start development server
 
 ```bash
 npm run dev
 ```
 
-The application will then be available at the local development URL provided by Vite.
-
----
-
-## 🏗️ Build for Production
-
-To create a production build:
+### 4. Production build
 
 ```bash
 npm run build
 ```
 
-The project has been build-tested using the Vite production build process.
+## 🌍 Deployment
 
----
+AlgoVerse is designed to deploy directly from GitHub to Vercel. Pushes to the connected production branch can trigger a new deployment automatically.
 
-## 📖 Documentation
+## 📸 Project Media
 
-For detailed information about the project, implementation approach, algorithms, visualization system, development challenges, and solutions:
+Project screenshots and demonstration media are maintained under `docs/` when available.
 
-**[Read the full documentation →](./docs/DOCUMENTATION.md)**
+## 🧩 Development Notes
 
----
+The project evolved from a basic algorithm visualizer into a broader DSA learning workspace. During development, the project addressed issues involving visualization state, React rendering, responsive layouts, algorithm imports, production builds, and graph-lab integration.
 
-## 🧩 Development Challenges
-
-During development, several issues were encountered and resolved, including:
-
-- Missing algorithm module imports
-- Missing store references
-- React maximum update depth errors
-- Visualization scaling and camera framing
-- Dark-theme dropdown styling
-- Production build warnings
-
-The detailed development history and solutions are documented in:
-
-**[docs/DOCUMENTATION.md](./docs/DOCUMENTATION.md)**
-
----
-
-## 🔮 Future Scope
-
-AlgoVerse currently focuses on fundamental DSA concepts.
-
-Potential future projects or expansions could explore:
-
-- Advanced graph algorithms
-- Dynamic programming visualizations
-- Shortest-path algorithms
-- Minimum spanning tree algorithms
-- Advanced tree algorithms
-- Algorithm benchmarking
-- More visualization modes
-- Additional interactive learning tools
-
-Advanced algorithms are intentionally kept outside the scope of the current basic DSA project.
-
----
+For deeper implementation notes, see [`docs/DOCUMENTATION.md`](./docs/DOCUMENTATION.md).
 
 ## 🎯 Project Goal
 
-The goal of AlgoVerse is simple:
+AlgoVerse aims to make DSA easier to understand by connecting **code → execution → visualization → explanation** in one place.
 
-> **Don't just read the algorithm. Watch it execute.**
-
-By combining source code, visual state changes, execution steps, and explanations, AlgoVerse provides a more interactive way to understand fundamental Data Structures and Algorithms.
-
----
+Instead of only asking what an algorithm does, AlgoVerse lets students watch the individual operations unfold.
 
 ## 👨‍💻 Author
 
-**Shashwat Ghadge**
-
+**Shashwat Ghadge**  
 B.Tech Computer Science & Engineering
-
----
 
 ## 📄 License & Copyright
 
 Copyright © 2026 Shashwat Ghadge. All rights reserved.
 
-AlgoVerse is **not open source**. No permission is granted to copy, modify, distribute, publish, sublicense, sell, or reuse this project's source code, design, graphics, documentation, or other project assets without prior written permission from the copyright holder.
+AlgoVerse is **not open source**. No permission is granted to copy, modify, distribute, publish, sublicense, sell, or reuse this project's source code, design, graphics, documentation, or other project assets without prior written permission from the copyright holder without prior written permission.
 
-For the complete terms, see the [`LICENSE`](./LICENSE) file.
+See [`LICENSE`](./LICENSE) for the full terms.
