@@ -13,7 +13,7 @@ export default function LearningHub() {
   const refresh = () => setProgress(loadProgress());
 
   return <>
-    <button onClick={() => setOpen(true)} className="fixed bottom-5 left-5 z-[100] rounded-2xl border border-violet-400/20 bg-[#101016]/95 px-4 py-3 text-xs font-semibold text-violet-200 shadow-2xl shadow-black/40 backdrop-blur-xl hover:border-violet-400/40 hover:bg-[#17131f]">✦ Learning Hub</button>
+    <button onClick={() => setOpen(true)} aria-label="Open Learning Hub" title="Learning Hub" className="fixed right-5 top-20 z-[100] flex items-center gap-2 rounded-2xl border border-violet-400/20 bg-[#101016]/95 px-4 py-3 text-xs font-semibold text-violet-200 shadow-2xl shadow-black/40 backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-violet-400/40 hover:bg-[#17131f]">✦ <span>Learning Hub</span></button>
     {open && <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/80 p-3 backdrop-blur-md sm:p-6">
       <div className="flex h-[min(900px,94vh)] w-full max-w-7xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#08080c] shadow-2xl shadow-black/70">
         <div className="flex shrink-0 items-center justify-between border-b border-white/10 px-5 py-4">
