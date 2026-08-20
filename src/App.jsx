@@ -16,10 +16,7 @@ function App() {
   useEffect(() => {
     const select = document.querySelector("select");
     if (!select) return;
-
-    const graphGroup = Array.from(select.querySelectorAll("optgroup")).find(
-      (group) => group.label === "Graph"
-    );
+    const graphGroup = Array.from(select.querySelectorAll("optgroup")).find((group) => group.label === "Graph");
     if (!graphGroup) return;
 
     [["bellmanFord", "Bellman-Ford ⚡"], ["floydWarshall", "Floyd-Warshall ▦"]].forEach(([value, label]) => {
@@ -41,23 +38,28 @@ function App() {
       setShortestPathAlgorithm(value === "floydWarshall" ? "floyd" : "bellman");
       setShortestPathOpen(true);
     };
-
     const rememberValue = (event) => {
       const value = event.target.value;
-      if (value !== "bellmanFord" && value !== "floydWarshall") {
-        select.dataset.previousValue = value;
-      }
+      if (value !== "bellmanFord" && value !== "floydWarshall") select.dataset.previousValue = value;
     };
 
     select.dataset.previousValue = select.value;
     select.addEventListener("change", handleChange, true);
     select.addEventListener("change", rememberValue);
-
     return () => {
       select.removeEventListener("change", handleChange, true);
       select.removeEventListener("change", rememberValue);
     };
   });
+
+  useEffect(() => {
+    if (!shortestPathOpen || shortestPathAlgorithm !== "floyd") return;
+    const timer = setTimeout(() => {
+      const button = Array.from(document.querySelectorAll("button")).find((item) => item.textContent?.includes("Floyd-Warshall"));
+      if (button) button.click();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [shortestPathOpen, shortestPathAlgorithm]);
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -88,7 +90,7 @@ function App() {
       {practiceOpen && <PracticeMode onClose={() => setPracticeOpen(false)} />}
       {notesOpen && <DSANotes onClose={() => setNotesOpen(false)} />}
       {mstOpen && <MSTLab onClose={() => setMstOpen(false)} />}
-      {shortestPathOpen && <ShortestPathLab onClose={() => setShortestPathOpen(false)} initialAlgorithm={shortestPathAlgorithm} />}
+      {shortestPathOpen && <ShortestPathLab onClose={() => setShortestPathOpen(false)} />}
     </>
   );
 }
