@@ -1,8 +1,8 @@
-# AlgoVerse
+# Nexorune
 
 > **Don't just read the algorithm. Watch it execute.**
 
-An interactive Data Structures & Algorithms learning platform built with React, Vite, Tailwind CSS, Three.js, React Three Fiber, Drei, and GSAP. AlgoVerse turns algorithms into step-by-step visual experiences with execution controls, explanations, complexity information, source-code views, practice questions, and revision notes.
+An interactive Data Structures & Algorithms learning platform built with React, Vite, Tailwind CSS, Three.js, React Three Fiber, Drei, and GSAP. Nexorune turns algorithms into step-by-step visual experiences with execution controls, explanations, complexity information, source-code views, practice questions, and revision notes.
 
 ## ✨ Highlights
 
@@ -39,45 +39,19 @@ An interactive Data Structures & Algorithms learning platform built with React, 
 
 ### Algorithm Workspace
 
-Select an algorithm, provide input, and run it. AlgoVerse generates execution states and connects the visualization with the algorithm implementation.
-
-```text
-Select Algorithm
-       ↓
-Provide Input
-       ↓
-Run Algorithm
-       ↓
-Generate Execution Steps
-       ↓
-Visualize Current State
-       ↓
-Highlight Relevant Code
-       ↓
-Explain Current Step
-       ↓
-Move Through Timeline
-```
+Select an algorithm, provide input, and run it. Nexorune generates execution states and connects the visualization with the algorithm implementation.
 
 ### DSA Notes
 
-A dedicated revision area covering core concepts such as Arrays, Linked Lists, Stacks, Queues, Trees, Heaps, Graphs, Searching, Sorting, and Complexity.
+A dedicated revision area covering Arrays, Linked Lists, Stacks, Queues, Trees, Heaps, Graphs, Searching, Sorting, and Complexity.
 
 ### Practice Mode
 
-A question-based revision system with:
-
-- Multiple-choice questions
-- Topic filtering
-- Difficulty levels
-- Hints
-- Instant feedback
-- Score tracking
-- Progress through the question set
+A question-based revision system with multiple-choice questions, topic filtering, difficulty levels, hints, instant feedback, score tracking, and progress through the question set.
 
 ## 🌐 Graph Learning
 
-AlgoVerse includes a dedicated set of graph visualizations covering traversal, shortest paths, and minimum spanning trees.
+Nexorune includes graph visualizations covering traversal, shortest paths, and minimum spanning trees.
 
 - **BFS / DFS:** graph traversal
 - **Dijkstra:** shortest paths with non-negative edge weights
@@ -88,30 +62,11 @@ AlgoVerse includes a dedicated set of graph visualizations covering traversal, s
 
 ## 💻 Code + Visualization
 
-The workspace is designed to connect implementation with behavior. Depending on the algorithm, the interface can show:
-
-- Current data-structure state
-- Active execution step
-- Relevant source-code section
-- Explanation of the current operation
-- Complexity information
-- User-provided input
-
-This makes the project useful for both **learning concepts** and **visual revision before exams/interviews**.
+The workspace connects implementation with behavior. Depending on the algorithm, the interface can show the current data-structure state, active execution step, relevant source-code section, explanation, complexity information, and user-provided input.
 
 ## 🎮 Custom Input
 
-Users can experiment with their own data instead of relying only on predefined examples.
-
-Supported inputs include:
-
-- Arrays and search targets
-- Linked List values and positions
-- Stack and Queue values
-- Tree and BST values
-- Graph edges and starting nodes
-
-Presets are available for supported algorithms so users can quickly explore an example.
+Users can experiment with their own data instead of relying only on predefined examples. Supported inputs include arrays and search targets, linked-list values and positions, stack and queue values, tree and BST values, and graph edges and starting nodes.
 
 ## 📊 Complexity Examples
 
@@ -146,43 +101,30 @@ Presets are available for supported algorithms so users can quickly explore an e
 ## 📂 Project Structure
 
 ```text
-AlgoVerse/
+Nexorune/
 ├── src/
 │   ├── algorithms/       # Algorithm logic and execution traces
 │   ├── components/       # Reusable UI, notes, practice, and panels
 │   ├── pages/            # Main algorithm workspace
 │   ├── scenes/           # Data-structure visualizations
-│   └── store/             # Execution state management
+│   └── store/            # Execution state management
 ├── public/                # Static assets
 ├── docs/                  # Project documentation and media
 ├── README.md
 ├── LICENSE
-├── package.json
 └── .gitignore
 ```
 
 ## 🚀 Run Locally
 
-### 1. Clone
-
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
-cd AlgoVerse
-```
-
-### 2. Install dependencies
-
-```bash
+git clone https://github.com/Shashwat220605/Nexorune.git
+cd Nexorune
 npm install
-```
-
-### 3. Start development server
-
-```bash
 npm run dev
 ```
 
-### 4. Production build
+For a production build:
 
 ```bash
 npm run build
@@ -190,23 +132,11 @@ npm run build
 
 ## 🌍 Deployment
 
-AlgoVerse is designed to deploy directly from GitHub to Vercel. Pushes to the connected production branch can trigger a new deployment automatically.
-
-## 📸 Project Media
-
-Project screenshots and demonstration media are maintained under `docs/` when available.
-
-## 🧩 Development Notes
-
-The project evolved from a basic algorithm visualizer into a broader DSA learning workspace. During development, the project addressed issues involving visualization state, React rendering, responsive layouts, algorithm imports, production builds, and graph-lab integration.
-
-For deeper implementation notes, see [`docs/DOCUMENTATION.md`](./docs/DOCUMENTATION.md).
+Nexorune is designed to deploy directly from GitHub to Vercel. Pushes to the connected production branch can trigger a new deployment automatically.
 
 ## 🎯 Project Goal
 
-AlgoVerse aims to make DSA easier to understand by connecting **code → execution → visualization → explanation** in one place.
-
-Instead of only asking what an algorithm does, AlgoVerse lets students watch the individual operations unfold.
+Nexorune makes DSA easier to understand by connecting **code → execution → visualization → explanation** in one place.
 
 ## 👨‍💻 Author
 
@@ -217,6 +147,6 @@ B.Tech Computer Science & Engineering
 
 Copyright © 2026 Shashwat Ghadge. All rights reserved.
 
-AlgoVerse is **not open source**. No permission is granted to copy, modify, distribute, publish, sublicense, sell, or reuse this project's source code, design, graphics, documentation, or other project assets without prior written permission from the copyright holder without prior written permission.
+Nexorune is **not open source**. No permission is granted to copy, modify, distribute, publish, sublicense, sell, or reuse this project's source code, design, graphics, documentation, or other project assets without prior written permission from the copyright holder.
 
 See [`LICENSE`](./LICENSE) for the full terms.
