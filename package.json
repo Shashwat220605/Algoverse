@@ -1,5 +1,5 @@
 {
-  "name": "algoverse",
+  "name": "nexorune",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -20,11 +20,11 @@
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.2",
     "tailwindcss": "^4.3.3",
-    "three": "^0.185.1",
+    "three": "^0.185.0",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
+    "@eslint/js": "^10.8.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
