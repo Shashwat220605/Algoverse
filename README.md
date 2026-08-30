@@ -1,8 +1,8 @@
-# Nexorune
+# AlgoVerse
 
 > **Don't just read the algorithm. Watch it execute.**
 
-An interactive Data Structures & Algorithms learning platform built with React, Vite, Tailwind CSS, Three.js, React Three Fiber, Drei, and GSAP. Nexorune turns algorithms into step-by-step visual experiences with execution controls, explanations, complexity information, source-code views, practice questions, and revision notes.
+An interactive Data Structures & Algorithms learning platform built with React, Vite, Tailwind CSS, Three.js, React Three Fiber, Drei, and GSAP. AlgoVerse turns algorithms into step-by-step visual experiences with execution controls, explanations, complexity information, source-code views, practice questions, and revision notes.
 
 ## ✨ Highlights
 
@@ -39,7 +39,7 @@ An interactive Data Structures & Algorithms learning platform built with React, 
 
 ### Algorithm Workspace
 
-Select an algorithm, provide input, and run it. Nexorune generates execution states and connects the visualization with the algorithm implementation.
+Select an algorithm, provide input, and run it. AlgoVerse generates execution states and connects the visualization with the algorithm implementation.
 
 ### DSA Notes
 
@@ -51,7 +51,7 @@ A question-based revision system with multiple-choice questions, topic filtering
 
 ## 🌐 Graph Learning
 
-Nexorune includes graph visualizations covering traversal, shortest paths, and minimum spanning trees.
+AlgoVerse includes graph visualizations covering traversal, shortest paths, and minimum spanning trees.
 
 - **BFS / DFS:** graph traversal
 - **Dijkstra:** shortest paths with non-negative edge weights
@@ -101,7 +101,7 @@ Users can experiment with their own data instead of relying only on predefined e
 ## 📂 Project Structure
 
 ```text
-Nexorune/
+AlgoVerse/
 ├── src/
 │   ├── algorithms/       # Algorithm logic and execution traces
 │   ├── components/       # Reusable UI, notes, practice, and panels
@@ -118,8 +118,8 @@ Nexorune/
 ## 🚀 Run Locally
 
 ```bash
-git clone https://github.com/Shashwat220605/Nexorune.git
-cd Nexorune
+git clone https://github.com/Shashwat220605/AlgoVerse.git
+cd AlgoVerse
 npm install
 npm run dev
 ```
@@ -132,11 +132,11 @@ npm run build
 
 ## 🌍 Deployment
 
-Nexorune is designed to deploy directly from GitHub to Vercel. Pushes to the connected production branch can trigger a new deployment automatically.
+AlgoVerse is designed to deploy directly from GitHub to Vercel. Pushes to the connected production branch can trigger a new deployment automatically.
 
 ## 🎯 Project Goal
 
-Nexorune makes DSA easier to understand by connecting **code → execution → visualization → explanation** in one place.
+AlgoVerse makes DSA easier to understand by connecting **code → execution → visualization → explanation** in one place.
 
 ## 👨‍💻 Author
 
@@ -147,6 +147,6 @@ B.Tech Computer Science & Engineering
 
 Copyright © 2026 Shashwat Ghadge. All rights reserved.
 
-Nexorune is **not open source**. No permission is granted to copy, modify, distribute, publish, sublicense, sell, or reuse this project's source code, design, graphics, documentation, or other project assets without prior written permission from the copyright holder.
+AlgoVerse is **not open source**. No permission is granted to copy, modify, distribute, publish, sublicense, sell, or reuse this project's source code, design, graphics, documentation, or other project assets without prior written permission from the copyright holder.
 
 See [`LICENSE`](./LICENSE) for the full terms.
